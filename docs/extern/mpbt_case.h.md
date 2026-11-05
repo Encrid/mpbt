@@ -105,7 +105,7 @@ Each step of a `script` does its actions in this order:
 If the output ends before the text of a `wait`, mpbt stops the steps.
 On Linux and on macOS, the signals are `SIGINT`, `SIGTERM` and `SIGHUP`.
 On Windows, a command that gets a signal runs on a console of its own. The signals are ctrl-c, ctrl-break and the close of the console.
-On each system, mpbt refuses a script with an interrupt and a termination, and a script with a signal after a hang-up.
+On each system, mpbt refuses a script with a signal after a hang-up.
 
 ## Helpers
 
@@ -361,14 +361,13 @@ Declare the enums and the bitmasks first.
 | `<path>: the case <name> sends <signal>, and the signals are interrupt, termination and hang-up` | `signal` names a different signal. |
 | `<path>: the case <name> sends a signal after a hang-up, and on Windows a hang-up ends the console` | A signal comes after a hang-up. |
 | `<path>: the case <name> pauses <pause>, and a pause is a number of seconds above 0` | `pause` is not a number above 0. |
-| `<path>: the case <name> sends an interrupt and a termination, and on Windows a termination turns off the interrupt` | A script sends both. |
 | `<path>: the case <name> uses <form> in a pattern, which mpbt does not have` | A pattern has a form that *Claims* does not give. |
 | `<path>: the case <name> has a pattern of more than 65536 steps` | The repeats of a pattern make it too long. |
 | `no case: <folder> holds no case` | The folder of the cases holds no case. `test` then ends with 0. |
 | `no case has <text> in its name` | `-k` matches no case. |
 | `.toolchain/project.toml: write [test] copies` | No `--copies`, and no `copies`. |
-| `<call> failed: error <code>` | Windows refused to make the console of a command. |
-| `GenerateConsoleCtrlEvent failed: error <code>` | Windows refused to send a termination. |
+| `<program> did not start` | The system did not start the command of a case or of its helper, for example because the program is not there. |
+| `<program> did not get the <signal>` | The system refused a signal of a script. |
 | `<case>: <verdict>` | mpbt writes the verdict of each case. With `--break`, `<case>, made false: <verdict>`. |
 | `<verdict> in <failed> of <copies> copies` | The verdict of a case when some of its copies failed. |
 | `  ended with <status>, and printed:` | A case failed: the status of its command, then the output. For the helper, `  the helper ended with <status>, and printed:`. |
