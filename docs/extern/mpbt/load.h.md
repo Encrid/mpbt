@@ -30,12 +30,28 @@ A key that no table and no manifest gives stops mpbt.
 ## The modules of a project
 
 Before the first phase of each command, mpbt builds each artifact of `[[load]]`, for the target of this machine and not for `--target`.
-mpbt loads a native module with BB-Native, and a module of wasm with BB-Wasm.
+mpbt loads a native module with BB-Native, which it holds, and a module of wasm with BB-Wasm.
+mpbt fetches BB-Wasm and its runtime as a source, only when a `[[load]]` names a module of wasm.
 A native module can use the OS. A module of wasm can only read and write components.
 
 A module joins the phases of mpbt: `docs/extern/mpbt/command.h.md`, *The phases*.
 It reads the types of mpbt that its grants name, and it can write a finding: `docs/extern/mpbt/finding.h.md`.
-The headers of mpbt and of Bridge are in `{toolchain}/include`.
+## The headers of a module
+
+A module of a project includes the headers of mpbt and those of Bridge. The project fetches each one with a `[[source]]`:
+
+- `BC-mpbt.zip`, of the release of mpbt that the pin of the project names. It holds `include/mpbt`.
+- The release of Bridge that this release of mpbt uses, for `bridge_abi.h` and `bridge_schema.h`. The notes of each release of mpbt name it.
+
+```toml
+[[source]]
+name = "bc_mpbt"
+url = "https://github.com/Encrid/mpbt/releases/download/v0.1.0/BC-mpbt.zip"
+sha256 = "<digest>"
+into = "{build}/third_party/bc_mpbt"
+```
+
+A module that declares a type of mpbt with a different descriptor is refused at its load, by Bridge.
 
 ## mpbt:Load
 

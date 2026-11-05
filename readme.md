@@ -5,6 +5,7 @@ Builds, tests and checks a project in C23 with zig, as one program for each targ
 ## Install
 
 Each release of mpbt holds a program for each target. Its `sha256.txt` gives the digest of each program.
+A release also holds `BC-mpbt.zip`, the headers for the modules of a project: `docs/extern/mpbt/load.h.md`, *The headers of a module*.
 Download the program of the target of your machine, and compare its digest with `sha256.txt`.
 mpbt needs `curl` and `git` on the path. The command `fetch` gets zig.
 
