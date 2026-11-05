@@ -1,6 +1,6 @@
 # include/mpbt_load.h
 
-`include/mpbt_load.h` gives `mpbt:Load`: a module of Bridge that mpbt loads into its run, beside its own modules.
+`include/mpbt_load.h` gives `mpbt:Load`: a module that runs on Bridge, which mpbt loads into its run, beside its own modules.
 Thus a project adds its own steps and checks to mpbt.
 
 ## [[load]]

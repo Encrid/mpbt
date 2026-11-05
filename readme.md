@@ -21,7 +21,7 @@ mpbt reads the config of a project from `.toolchain/project.toml` and `.toolchai
 
 ## API
 
-mpbt is a host of Bridge, and each of its steps and checks is a module.
+mpbt is a host made with Bridge, and each of its steps and checks is a module.
 The headers of `include` declare the components that these modules share, and a module of a project can read and write them: `docs/extern/mpbt_load.h.md`.
 
 | Header | Types of |
