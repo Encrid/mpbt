@@ -27,6 +27,7 @@
         bool test; \
         bool path; \
         bool unstamped; \
+        uint32_t order; \
     }
 
 BRIDGE_SCHEMA_STRUCT_TYPE(mpbt_artifact_t, MPBT_ARTIFACT_FIELDS);

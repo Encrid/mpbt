@@ -92,7 +92,7 @@ uint8_t { MPBT_SYSTEM_EVERY = 1, MPBT_SYSTEM_POSIX = 2, MPBT_SYSTEM_WINDOWS = 3 
 | Message | When |
 | --- | --- |
 | `no target runs on <system> <machine>: name one` | No target runs on this machine, and the run gives no `--target`. |
-| `no target runs here: name one` | `join` or `clean` runs on a machine of no target, and gives no `--target`. |
+| `no target runs here: name one` | No target runs on this machine, and a command needs one: `join` or `clean` with no `--target`, or `load` with a `[[load]]`. |
 | `no target <target>; the targets: <targets>` | `--target` names no target. |
 | `<target> does not run here: build it, and test it where it runs` | `test` gets a target of a different machine. |
 | `fetch runs on a machine of a target` | `fetch` runs on a machine of no target. |

@@ -55,7 +55,7 @@ A module of a project can join each phase after `load`: `docs/extern/mpbt_load.h
 
 | Phase | Work |
 | --- | --- |
-| `read` | Writes `mpbt:Command`, then reads the config and the cases into their components. In `cla`, it writes only `mpbt:Command`. |
+| `read` | Writes `mpbt:Command`, then reads the config into its components. In `test`, it also reads the cases. In `cla`, it writes only `mpbt:Command`. |
 | `load` | Builds each artifact of `[[load]]` for this machine, then loads each module of `[[load]]`. With no `[[load]]`, it does nothing. |
 | `fetch` | Gets zig and the sources. |
 | `take` | Takes the dependencies. |
@@ -209,10 +209,21 @@ Declare the enum and the bitmask first.
 | `usage: mpbt cla --decide <author> <signed> [<by> <said>]` | `--decide` gets a number of values that is not 2 or 4. |
 | `nothing to clean: <folder> is not there` | `clean` or `distclean` finds no output folder. |
 | `cleaned <folder>` | `clean` or `distclean` removed the files. |
+| `clean refuses <folder>, which holds the root` | `--out` names the root of the project, or a folder above it. `clean` and `distclean` remove nothing. |
+| `clean cannot remove <path>` | The system refuses to remove a file or a folder of the output. |
+| `clean cannot read <folder>` | The system refuses to list a folder of the output. |
 | `<author> has signed cla.md` | The record names the author. The pull request passes. |
 | `<author> signs cla.md` | The author wrote the sentence of the agreement. mpbt records the author, and the pull request passes. |
 | `<author> has not signed cla.md` | mpbt asks the author to sign. The pull request fails. |
 | `<action>, <verdict>: <reason>` | `--decide` writes the action, `passes` or `fails`, and the reason. |
-| `<method> <path> answered <code>: <text>` | The API of GitHub answers with an error that is not 404. |
+| `<method> <path> answered <code>: <text>` | The API of GitHub answers with an error that is not 404, or with an answer that lacks a value that `cla` reads. |
+| `<name> is not set, and cla needs it` | The environment lacks `GITHUB_EVENT_PATH`, `GITHUB_REPOSITORY` or `GITHUB_TOKEN`. |
+| `cla cannot read the event <path>` | The file of the event of GitHub does not read. |
+| `<path> is not the JSON of an event of GitHub: <reason>` | The event is not JSON, or lacks a key that `cla` reads. Then `<reason>` is `no` and the key, for example `no issue.number`. |
+| `curl is not on the path, and cla needs it` | This machine has no `curl`. |
+| `<method> <path>: curl ended with <status>` | `curl` gives no answer of the API of GitHub. |
+| `<program> did not start` | The system did not start a program, for example a step of a kind, a tool, or a case. The program can be absent. |
+| `mpbt cannot read <path>` | The system refuses to read a file that a phase needs. |
+| `mpbt cannot write <path>` | The system refuses to write a file or make a folder that a phase needs. |
 | `a signal came: mpbt stops after this phase` | An interrupt, a termination or a hang-up came. A second signal ends mpbt at once, with 1. |
 | `mpbt cannot write its modules into <folder>` | The folder `{toolchain}/modules` does not take a file. |

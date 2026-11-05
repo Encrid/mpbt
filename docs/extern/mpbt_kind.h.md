@@ -37,6 +37,7 @@ A step does its actions in this order: `run`, `section`, `contains`, `copy`, `re
 | `rename` | Moves the first file to the second file. |
 
 With `cwd`, `{sources}`, each folder of `{include}` and the caches of zig are full paths. Each other relative path of the command starts from `cwd`.
+The global cache of zig is the folder `zig-cache` beside the program mpbt, and the local cache is `{build}/zig-cache`.
 A variant with `unstamped = true` does no `section`: `docs/extern/mpbt_artifact.h.md`, *[[artifact]]*.
 
 The texts of a kind keep their variables. For each artifact, the build replaces them with these variables, and with the keys of its target:
@@ -45,7 +46,7 @@ The texts of a kind keep their variables. For each artifact, the build replaces 
 | --- | --- |
 | `{name}` | The name of the artifact. |
 | `{output}` | The file of the artifact. |
-| `{work}` | The start of the name of a temporary file, in `<dist>/obj`. |
+| `{work}` | The start of the name of a temporary file, in `{out}/obj`. |
 | `{sources}` | The files that match the patterns of `sources`. |
 | `{defines}` | Each item of `defines`, after `-D`. |
 | `{include}` | Each folder of `include`, after `-I`. |

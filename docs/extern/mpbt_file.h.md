@@ -5,7 +5,9 @@
 ## The files of the project
 
 The files of the project are each file that git tracks, and each file that git does not ignore.
-The files of `tests` are not among them, since no check reads `tests`.
+If the root is not the top folder of a repository of git, they are each file under the root, except the files of `{build}`.
+The files of `tests` are among them: `xref` checks a path of `tests` that a document cites, and `text` reads their words.
+Each other check skips them, because their bytes can be the data of a case.
 In the phase `read` of `check` and of `test`, mpbt writes an entity with `mpbt:File` for each file of the project.
 Thus a module of wasm can check a file with no access to the OS.
 

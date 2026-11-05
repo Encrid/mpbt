@@ -65,6 +65,17 @@ A list variable inside a longer text needs a separator after a colon, for exampl
 In the phase `read`, mpbt replaces the variables of each text of the config.
 The texts of the steps of a kind and the texts of the cases keep their variables. The build and the test replace them later, with the variables of the artifact or of the case.
 
+## Globs
+
+A path in a list of files, or in an exception, can be a glob:
+
+- `*` matches each run of bytes inside one name of the path, but never a `/`.
+- `**`, as a whole name, matches 0 or more names, for the files of the folders inside.
+- Each other byte matches only itself, also `?` and `[`.
+
+A glob compares the bytes, so the case of a letter counts on each system. Thus a glob gives the same files on each system.
+The files of a glob come in the order of their paths, folder by folder, and each file comes one time.
+
 ## [project]
 
 | Key | Type | Default | Value |
@@ -188,5 +199,8 @@ Declare the 2 enums first.
 | `[variables] names a built-in variable or a key of a target: <names>` | A key of `[variables]` has the name of a variable that mpbt gives. |
 | `--set <name>=<value>: [variables] has no <name>` | `--set` names no key of `[variables]`. |
 | `the tool <name> is not at <path>` | A text names a tool, and the program is not there. |
+| `<file>: <key> is <found>, and it must be <wanted>` | A key of the config has another type of TOML, for example a text in place of an integer. |
+| `<table> states no <key>` | A key that mpbt needs is not there, for example `timeout` of `[test]`. |
+| `<table>: <key> is <value>, and it must be one of <values>` | A key names a value that mpbt does not know, for example a `side` or a `system`. |
 | `{<name>} holds itself: <names>` | A variable holds itself, directly or through the variables of `<names>`. |
 | `<setting> holds a line end, and a setting holds one line for each item` | An item of a list in the settings of a module holds a line end. |

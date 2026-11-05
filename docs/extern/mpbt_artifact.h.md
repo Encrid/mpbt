@@ -67,7 +67,7 @@ The texts of the artifact have their variables replaced in the phase `read`, wit
 ## mpbt:Artifact
 
 Each artifact and each variant is an entity with `mpbt:Artifact`.
-`mpbt_artifact_t` takes 100 bytes. Its alignment is 4.
+`mpbt_artifact_t` takes 104 bytes. Its alignment is 4.
 
 | Field | C type | Offset | Value |
 | --- | --- | --- | --- |
@@ -86,6 +86,7 @@ Each artifact and each variant is an entity with `mpbt:Artifact`.
 | `test` | `bool` | 96 | `test`. |
 | `path` | `bool` | 97 | `path`. |
 | `unstamped` | `bool` | 98 | `unstamped` of a variant. |
+| `order` | `uint32_t` | 100 | The place of the artifact in the config, from 0. |
 
 Byte 99 holds no field. Its lists: `docs/extern/mpbt_project.h.md`, *Lists and maps*.
 
@@ -110,7 +111,7 @@ Bytes 17 to 19 hold no field.
 | `mpbt:Built` | `mpbt_built_t` | `mpbt_built_t_desc` | `MPBT_BUILT_FIELDS` |
 
 ```text
-{ bridge_text_t name; bridge_text_t kind; bridge_text_t sources; bridge_text_t include; bridge_text_t defines; bridge_text_t flags; bridge_text_t link; bridge_text_t beside; bridge_text_t manifest; bridge_text_t folder; bridge_text_t target; bridge_text_t part; bool test; bool path; bool unstamped; }
+{ bridge_text_t name; bridge_text_t kind; bridge_text_t sources; bridge_text_t include; bridge_text_t defines; bridge_text_t flags; bridge_text_t link; bridge_text_t beside; bridge_text_t manifest; bridge_text_t folder; bridge_text_t target; bridge_text_t part; bool test; bool path; bool unstamped; uint32_t order; }
 { bridge_text_t output; bridge_text_t files; bool linked; }
 ```
 
@@ -133,5 +134,6 @@ Bytes 17 to 19 hold no field.
 | Message | When |
 | --- | --- |
 | `no file matches the sources of <name>` | No file matches the patterns of `sources`. |
+| `<name> names the target <target>, and [targets] does not have it` | An artifact names a target that the project does not give. |
 | `the cases need what is linked: <names>` | `test` finds an artifact that is not linked. |
 | `<paths>` | `build` and `pack` write the output of each artifact that ships, one path on each line. |

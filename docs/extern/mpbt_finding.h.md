@@ -6,6 +6,7 @@
 
 Each module that finds a fault writes an entity with `mpbt:Finding`. A module of a project can write one too.
 In the phase `report`, mpbt writes each finding on a line.
+A text can hold line ends, for example the output of a command that failed. Then its other lines come as they are.
 The order is the order of the phases, then of the paths, of the lines and of the columns:
 
 ```text

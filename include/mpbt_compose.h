@@ -44,4 +44,12 @@ BRIDGE_SCHEMA_STRUCT_DESC(mpbt_part_t, MPBT_PART_FIELDS);
 BRIDGE_SCHEMA_STRUCT_TYPE(mpbt_package_t, MPBT_PACKAGE_FIELDS);
 BRIDGE_SCHEMA_STRUCT_DESC(mpbt_package_t, MPBT_PACKAGE_FIELDS);
 
+    #define MPBT_DELIVERABLE_FIELDS { \
+        bridge_text_t part; \
+        bridge_text_t files; \
+    }
+
+BRIDGE_SCHEMA_STRUCT_TYPE(mpbt_deliverable_t, MPBT_DELIVERABLE_FIELDS);
+BRIDGE_SCHEMA_STRUCT_DESC(mpbt_deliverable_t, MPBT_DELIVERABLE_FIELDS);
+
 #endif

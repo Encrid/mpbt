@@ -30,6 +30,7 @@ A key that no table and no manifest gives stops mpbt.
 ## The modules of a project
 
 In the phase `load`, after `read`, mpbt builds each artifact of `[[load]]`, for the target of this machine and not for `--target`.
+These artifacts go into the folder `<build>/load`, because Windows refuses to replace a library that a process loaded.
 Then it loads each module of `[[load]]`, and runs the other phases.
 `fetch`, `clean`, `distclean`, `cla` and `runner` do not run `load`. `fetch` runs before the sources that a build needs are there.
 
@@ -59,7 +60,7 @@ A module that declares a type of mpbt with a different descriptor is refused at 
 ## mpbt:Load
 
 Each table `[[load]]` is an entity with `mpbt:Load`.
-`mpbt_load_t` takes 44 bytes. Its alignment is 4.
+`mpbt_load_t` takes 48 bytes. Its alignment is 4.
 
 | Field | C type | Offset | Value |
 | --- | --- | --- | --- |
@@ -69,6 +70,7 @@ Each table `[[load]]` is an entity with `mpbt:Load`.
 | `phases` | `bridge_text_t` | 24 | A map: each phase of the module, then its phase of mpbt. |
 | `config` | `bridge_text_t` | 32 | A map: each setting, then its value as a text of TOML, for example `true` or `"word"`. |
 | `from` | `mpbt_load_from_t` | 40 | Where the module comes from. |
+| `order` | `uint32_t` | 44 | The place of the table in `[[load]]`, from 0. |
 
 Bytes 41 to 43 hold no field. Its maps: `docs/extern/mpbt_project.h.md`, *Lists and maps*.
 
@@ -90,7 +92,7 @@ Bytes 41 to 43 hold no field. Its maps: `docs/extern/mpbt_project.h.md`, *Lists 
 
 ```text
 uint8_t { MPBT_LOAD_ARTIFACT = 1, MPBT_LOAD_FILE = 2 }
-{ bridge_text_t artifact; bridge_text_t file; bridge_text_t keys; bridge_text_t phases; bridge_text_t config; mpbt_load_from_t from; }
+{ bridge_text_t artifact; bridge_text_t file; bridge_text_t keys; bridge_text_t phases; bridge_text_t config; mpbt_load_from_t from; uint32_t order; }
 ```
 
 ## The declarations

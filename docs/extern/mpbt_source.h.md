@@ -113,6 +113,7 @@ Each source is an entity with `mpbt:Source`.
 | `<archive> is not what the maker publishes: its sha256 is <digest>` | An archive has a different digest. |
 | `<patch> does not apply to <name>` | A part of a patch does not match its file. |
 | `<path> leaves the folder of <name>` | A path of an archive is outside the folder `into`. |
+| `<archive> is not a zip, a tar, a tar.gz or a tar.xz` | The name of an archive ends with none of `.zip`, `.tar`, `.tar.gz` and `.tar.xz`. |
 | `<url> is not there: curl ended with <status>` | `curl` cannot download the archive. |
 | `curl is not on the path, and fetch needs it` | This machine has no `curl`. |
 | `zig is fetched on a machine that runs a target` | No target runs on this machine. |

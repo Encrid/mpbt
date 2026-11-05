@@ -26,6 +26,28 @@ BRIDGE_SCHEMA_STRUCT_DESC(mpbt_text_check_t, MPBT_TEXT_CHECK_FIELDS);
 BRIDGE_SCHEMA_STRUCT_TYPE(mpbt_layout_check_t, MPBT_LAYOUT_CHECK_FIELDS);
 BRIDGE_SCHEMA_STRUCT_DESC(mpbt_layout_check_t, MPBT_LAYOUT_CHECK_FIELDS);
 
+    #define MPBT_STYLE_CHECK_FIELDS { \
+        uint32_t columns; \
+        uint32_t lines; \
+        uint32_t functions; \
+        uint32_t arguments; \
+        uint32_t branches; \
+        uint32_t depth; \
+    }
+
+BRIDGE_SCHEMA_STRUCT_TYPE(mpbt_style_check_t, MPBT_STYLE_CHECK_FIELDS);
+BRIDGE_SCHEMA_STRUCT_DESC(mpbt_style_check_t, MPBT_STYLE_CHECK_FIELDS);
+
+    #define MPBT_PROSE_CHECK_FIELDS { \
+        uint32_t sentence; \
+        uint32_t step; \
+        uint32_t paragraph; \
+        uint32_t description; \
+    }
+
+BRIDGE_SCHEMA_STRUCT_TYPE(mpbt_prose_check_t, MPBT_PROSE_CHECK_FIELDS);
+BRIDGE_SCHEMA_STRUCT_DESC(mpbt_prose_check_t, MPBT_PROSE_CHECK_FIELDS);
+
     #define MPBT_RETIRED_FIELDS { \
         bridge_text_t word; \
         bridge_text_t text; \
