@@ -1,6 +1,6 @@
-# include/mpbt/kind.h
+# include/mpbt_kind.h
 
-`include/mpbt/kind.h` gives `mpbt:Kind` and `mpbt:Step`: the kinds of artifact, and the steps that make an artifact of a kind.
+`include/mpbt_kind.h` gives `mpbt:Kind` and `mpbt:Step`: the kinds of artifact, and the steps that make an artifact of a kind.
 
 ## [kinds.\<kind\>]
 
@@ -37,7 +37,7 @@ A step does its actions in this order: `run`, `section`, `contains`, `copy`, `re
 | `rename` | Moves the first file to the second file. |
 
 With `cwd`, `{sources}`, each folder of `{include}` and the caches of zig are full paths. Each other relative path of the command starts from `cwd`.
-A variant with `unstamped = true` does no `section`: `docs/extern/mpbt/artifact.h.md`, *[[artifact]]*.
+A variant with `unstamped = true` does no `section`: `docs/extern/mpbt_artifact.h.md`, *[[artifact]]*.
 
 The texts of a kind keep their variables. For each artifact, the build replaces them with these variables, and with the keys of its target:
 
@@ -87,7 +87,7 @@ Each step is an entity with `mpbt:Step`. Its owner is the entity of its kind.
 | `actions` | `mpbt_step_actions_t` | 69 | The actions of the step. |
 
 Bytes 70 and 71 hold no field. Each text keeps its variables.
-Its lists: `docs/extern/mpbt/project.h.md`, *Lists and maps*.
+Its lists: `docs/extern/mpbt_project.h.md`, *Lists and maps*.
 
 ### mpbt:mpbt_step_list_t
 

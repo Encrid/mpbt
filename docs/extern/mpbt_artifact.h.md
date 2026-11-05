@@ -1,13 +1,13 @@
-# include/mpbt/artifact.h
+# include/mpbt_artifact.h
 
-`include/mpbt/artifact.h` gives `mpbt:Artifact`, a file that the build makes, and `mpbt:Built`, the files that the build made for it.
+`include/mpbt_artifact.h` gives `mpbt:Artifact`, a file that the build makes, and `mpbt:Built`, the files that the build made for it.
 
 ## [[artifact]]
 
 | Key | Type | Default | Value |
 | --- | --- | --- | --- |
 | `name` | text | none | The name of the artifact. It can hold variables, for example `{system}`. |
-| `kind` | text | none | The kind: `docs/extern/mpbt/kind.h.md`. |
+| `kind` | text | none | The kind: `docs/extern/mpbt_kind.h.md`. |
 | `sources` | list | none | The patterns of the sources, from the folder of the project. An item that is a list variable gives the items of the list. |
 | `include` | list | `[]` | The folders of the headers. |
 | `defines` | list | `[]` | The macros, with no `-D`. |
@@ -20,7 +20,7 @@
 | `variants` | list of tables | `[]` | The variants: *Variants*. |
 | `test` | bool | `false` | `true` for an artifact that only the tests use. Only `test` makes it, and `package.txt` does not list it. |
 | `path` | bool | `false` | `true` for a library of the folder `built` that a case loads by its macro: *The macros of the paths*. |
-| `part` | text | none | In a project with parts: the part of the artifact: `docs/extern/mpbt/compose.h.md`, *[parts]*. |
+| `part` | text | none | In a project with parts: the part of the artifact: `docs/extern/mpbt_compose.h.md`, *[parts]*. |
 
 ```toml
 [[artifact]]
@@ -87,7 +87,7 @@ Each artifact and each variant is an entity with `mpbt:Artifact`.
 | `path` | `bool` | 97 | `path`. |
 | `unstamped` | `bool` | 98 | `unstamped` of a variant. |
 
-Byte 99 holds no field. Its lists: `docs/extern/mpbt/project.h.md`, *Lists and maps*.
+Byte 99 holds no field. Its lists: `docs/extern/mpbt_project.h.md`, *Lists and maps*.
 
 ## mpbt:Built
 

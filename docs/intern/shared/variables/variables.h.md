@@ -1,7 +1,7 @@
 # src/shared/variables/variables.h
 
 This header declares the variables of one target, and the functions that replace them in a text or in a list.
-The rules are those of `docs/extern/mpbt/project.h.md`, *Variables*.
+The rules are those of `docs/extern/mpbt_project.h.md`, *Variables*.
 
 ## variables_t
 

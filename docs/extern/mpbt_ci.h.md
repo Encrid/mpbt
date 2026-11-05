@@ -1,6 +1,6 @@
-# include/mpbt/ci.h
+# include/mpbt_ci.h
 
-`include/mpbt/ci.h` gives `mpbt:Ci`: what the cases of a project need from a runner of the workflows, for example a display.
+`include/mpbt_ci.h` gives `mpbt:Ci`: what the cases of a project need from a runner of the workflows, for example a display.
 
 ## [ci]
 

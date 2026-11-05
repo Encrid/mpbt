@@ -1,6 +1,6 @@
-# include/mpbt/compose.h
+# include/mpbt_compose.h
 
-`include/mpbt/compose.h` gives `mpbt:Compose`, `mpbt:Part` and `mpbt:Package`: what the deliverable holds, the parts of a project, and the proof of its package.
+`include/mpbt_compose.h` gives `mpbt:Compose`, `mpbt:Part` and `mpbt:Package`: what the deliverable holds, the parts of a project, and the proof of its package.
 
 ## [compose]
 
@@ -72,7 +72,7 @@ target <target>
 ```
 
 Each `<file>` is a path from `{out}`, and `<digest>` is its SHA-256 digest.
-A different project can take these files as a dependency: `docs/extern/mpbt/dependency.h.md`.
+A different project can take these files as a dependency: `docs/extern/mpbt_dependency.h.md`.
 
 ## The zip
 
@@ -133,7 +133,7 @@ Each part is an entity with `mpbt:Part`.
 | `link` | `bridge_text_t` | 16 | A list: `link`. |
 | `include` | `bridge_text_t` | 24 | A list: `include`. |
 
-Its lists: `docs/extern/mpbt/project.h.md`, *Lists and maps*.
+Its lists: `docs/extern/mpbt_project.h.md`, *Lists and maps*.
 
 ## The C types
 

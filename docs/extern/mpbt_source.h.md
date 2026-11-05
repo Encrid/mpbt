@@ -1,6 +1,6 @@
-# include/mpbt/source.h
+# include/mpbt_source.h
 
-`include/mpbt/source.h` gives `mpbt:Source`: an archive of files of a different maker, which `fetch` gets, for example a release of a library.
+`include/mpbt_source.h` gives `mpbt:Source`: an archive of files of a different maker, which `fetch` gets, for example a release of a library.
 
 ## [[source]]
 
@@ -46,7 +46,7 @@ A patch has a part for each file, from its line `diff --git`, and names the file
 A part applies only if each line of its context is in the file, at the line that the part gives.
 A patch can end its lines as Windows does, or as Linux does.
 
-The release of a part has a folder for each target, in one zip: `docs/extern/mpbt/compose.h.md`, *The release*.
+The release of a part has a folder for each target, in one zip: `docs/extern/mpbt_compose.h.md`, *The release*.
 With `top = "{target}"`, one source with one digest takes that zip for each target.
 
 ## zig

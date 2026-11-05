@@ -1,6 +1,6 @@
-# include/mpbt/case.h
+# include/mpbt_case.h
 
-`include/mpbt/case.h` gives the types of the tests: `mpbt:Tests`, `mpbt:TestRule`, and the types of a case and of its false variant.
+`include/mpbt_case.h` gives the types of the tests: `mpbt:Tests`, `mpbt:TestRule`, and the types of a case and of its false variant.
 A case runs a command, and makes claims about its exit status, its output and its files.
 
 ## [test]
@@ -39,7 +39,7 @@ It does not apply to the groups of its list `exempt`.
 | `helper` | table | A second command that runs at the same time: *Helpers*. |
 | `files` | table | The texts that mpbt writes before the command starts. A key is a path, and its value is the text. |
 | `folders` | table | The folders that mpbt makes before the command starts. A key is a path, and its value lists the artifacts and files that mpbt copies into it. |
-| `fail` | table | The calls that fail: a key is a function, and its value is the number of the call. `docs/extern/mpbt/fail.h.md` tells it. |
+| `fail` | table | The calls that fail: a key is a function, and its value is the number of the call. `docs/extern/mpbt_fail.h.md` tells it. |
 | `claims` | table | The claims: *Claims*. A case needs one claim or more. |
 | `false` | table | The false variant: *The false variant*. Each case needs one. |
 | `alone` | bool | `true` if no copy of the case can run at the same time. Then the case runs one time with `--copies`. |
@@ -195,7 +195,7 @@ Bytes 21 to 23 hold no field.
 | `ignore_interrupt` | `bool` | 80 | `true` if `ignore` holds `interrupt`. |
 
 Bytes 81 to 83 hold no field. Each text keeps its variables: the test replaces them for each copy.
-Its lists and maps: `docs/extern/mpbt/project.h.md`, *Lists and maps*.
+Its lists and maps: `docs/extern/mpbt_project.h.md`, *Lists and maps*.
 
 ## mpbt:FalseVariant
 

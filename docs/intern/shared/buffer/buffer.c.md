@@ -11,7 +11,7 @@ Thus a text of `n` bytes costs about `log2(n)` calls of `realloc`.
 ## The errors
 
 If `realloc` fails, `buffer_add` and `buffer_add_byte` give `false` and keep the old bytes.
-The caller then writes the finding of its own work. The fail layer of `test` can make this call fail: `docs/extern/mpbt/fail.h.md`.
+The caller then writes the finding of its own work. The fail layer of `test` can make this call fail: `docs/extern/mpbt_fail.h.md`.
 
 ## Functions
 

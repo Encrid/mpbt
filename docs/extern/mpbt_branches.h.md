@@ -1,6 +1,6 @@
-# include/mpbt/branches.h
+# include/mpbt_branches.h
 
-`include/mpbt/branches.h` gives `mpbt:BranchException`: a branch that no case can reach, which `test --branches` excuses.
+`include/mpbt_branches.h` gives `mpbt:BranchException`: a branch that no case can reach, which `test --branches` excuses.
 
 ## test --branches
 
@@ -51,7 +51,7 @@ Each exception is an entity with `mpbt:BranchException`.
 | `line` | `uint32_t` | 16 | `line`. |
 | `col` | `uint32_t` | 20 | `col`. |
 | `side` | `mpbt_side_t` | 24 | `side`. |
-| `system` | `mpbt_system_t` | 25 | `system`: `docs/extern/mpbt/target.h.md`, *mpbt:mpbt_system_t*. |
+| `system` | `mpbt_system_t` | 25 | `system`: `docs/extern/mpbt_target.h.md`, *mpbt:mpbt_system_t*. |
 
 Bytes 26 and 27 hold no field.
 

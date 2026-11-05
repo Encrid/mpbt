@@ -1,6 +1,6 @@
 # src/shared/lists/lists.h
 
-This header declares the functions that write and read a list or a map in the form of `docs/extern/mpbt/project.h.md`, *Lists and maps*.
+This header declares the functions that write and read a list or a map in the form of `docs/extern/mpbt_project.h.md`, *Lists and maps*.
 Each module of mpbt uses them for the lists of its components, and for the lists of its settings.
 
 ## lists_item_t

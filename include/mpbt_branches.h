@@ -10,7 +10,7 @@
 
     #include "bridge_abi.h"
     #include "bridge_schema.h"
-    #include "mpbt/target.h"
+    #include "mpbt_target.h"
 
     #define MPBT_SIDE_VALUES { \
         MPBT_SIDE_TRUE = 1, \

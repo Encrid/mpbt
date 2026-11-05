@@ -1,6 +1,6 @@
-# include/mpbt/command.h
+# include/mpbt_command.h
 
-`include/mpbt/command.h` gives `mpbt:Command`: the command of a run of mpbt, and its options.
+`include/mpbt_command.h` gives `mpbt:Command`: the command of a run of mpbt, and its options.
 This document also gives the phases that each command runs.
 
 ## The commands
@@ -22,17 +22,17 @@ mpbt <command> [<option> ...]
 | `cla` | `read`, `cla`, `report` | Decides whether the author of a pull request signed `cla.md`. |
 | `runner` | `read`, `runner`, `report` | Writes the commands that give a runner of GitHub the needs of `[ci]`. |
 
-mpbt ends with 0 if no phase writes a finding, and else with 1: `docs/extern/mpbt/finding.h.md`.
+mpbt ends with 0 if no phase writes a finding, and else with 1: `docs/extern/mpbt_finding.h.md`.
 
 ## The options
 
 | Option | Commands | Result |
 | --- | --- | --- |
 | `--root <folder>` | All but `cla` | The folder of the project. The default is the current folder. |
-| `--target <target>` | All but `cla` | The target of the run: `docs/extern/mpbt/target.h.md`, *The targets*. |
+| `--target <target>` | All but `cla` | The target of the run: `docs/extern/mpbt_target.h.md`, *The targets*. |
 | `--part <part>` | `build`, `pack`, `test`, `join` | Acts on this part, and on each part that it uses. It can come more than one time. |
 | `--tag <tag>` | `build`, `pack`, `test`, `join` | A tag `<part>-v<major>.<minor>.<patch>` gives `--part <part>`. A tag `v<major>.<minor>.<patch>` gives no part. |
-| `--debug` | All but `cla` | Builds with the values of debug: `docs/extern/mpbt/project.h.md`, *[variables]*. |
+| `--debug` | All but `cla` | Builds with the values of debug: `docs/extern/mpbt_project.h.md`, *[variables]*. |
 | `--out <folder>` | All but `cla` | The output folder, `{build}`. The default is the folder `build` of the root. |
 | `--set <name>=<value>` | All but `cla` | Gives a key of `[variables]` this value. It can come more than one time. |
 | `--leave <name>` | `build`, `pack` | Leaves the file `<name>` out of the deliverable and out of its zip. |
@@ -40,8 +40,8 @@ mpbt ends with 0 if no phase writes a finding, and else with 1: `docs/extern/mpb
 | `-k <text>` | `test` | Runs only the cases whose name holds `<text>`. |
 | `--copies <number>` | `test` | The copies of each case that run together, in place of `[test] copies`. |
 | `--rounds <number>` | `test` | The number of rounds of all the cases, one after the other. |
-| `--branches` | `test` | Writes each branch that no case reaches: `docs/extern/mpbt/branches.h.md`. |
-| `--leaks` | `test` | Writes each case that keeps a resource: `docs/extern/mpbt/leaks.h.md`. |
+| `--branches` | `test` | Writes each branch that no case reaches: `docs/extern/mpbt_branches.h.md`. |
+| `--leaks` | `test` | Writes each case that keeps a resource: `docs/extern/mpbt_leaks.h.md`. |
 | `--commits <range>` | `check` | Checks the messages of the commits of this range of git. |
 | `--decide <author> <signed> [<by> <said>]` | `cla` | Writes the decision, and changes nothing. `<signed>` holds the names of the record, with commas between them. `<by>` is the author of a comment, and `<said>` is its text. |
 
@@ -49,7 +49,7 @@ mpbt ends with 0 if no phase writes a finding, and else with 1: `docs/extern/mpb
 
 ## The phases
 
-A module of a project can join each phase: `docs/extern/mpbt/load.h.md`.
+A module of a project can join each phase: `docs/extern/mpbt_load.h.md`.
 
 | Phase | Work |
 | --- | --- |
@@ -120,7 +120,7 @@ To sign it, write a comment that contains only this sentence:
 
 Bytes 93 to 95 hold no field.
 A field of an option that the command line does not give holds no bytes, or 0.
-Its lists and maps: `docs/extern/mpbt/project.h.md`, *Lists and maps*.
+Its lists and maps: `docs/extern/mpbt_project.h.md`, *Lists and maps*.
 
 ### mpbt:mpbt_command_name_t
 

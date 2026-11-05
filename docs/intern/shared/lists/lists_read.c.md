@@ -11,7 +11,7 @@ It reads the shared memory only, so a module of wasm can use it too.
 
 ## A list of a setting
 
-A setting holds its list as lines: `docs/extern/mpbt/project.h.md`, *Lists and maps*.
+A setting holds its list as lines: `docs/extern/mpbt_project.h.md`, *Lists and maps*.
 `lists_get_line` gives the next line from a position, without its `\n`, and moves the position past it.
 At the end of the text, it gives `false`.
 

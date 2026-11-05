@@ -1,6 +1,6 @@
-# include/mpbt/load.h
+# include/mpbt_load.h
 
-`include/mpbt/load.h` gives `mpbt:Load`: a module of Bridge that mpbt loads into its run, beside its own modules.
+`include/mpbt_load.h` gives `mpbt:Load`: a module of Bridge that mpbt loads into its run, beside its own modules.
 Thus a project adds its own steps and checks to mpbt.
 
 ## [[load]]
@@ -34,13 +34,13 @@ mpbt loads a native module with BB-Native, which it holds, and a module of wasm 
 mpbt fetches BB-Wasm and its runtime as a source, only when a `[[load]]` names a module of wasm.
 A native module can use the OS. A module of wasm can only read and write components.
 
-A module joins the phases of mpbt: `docs/extern/mpbt/command.h.md`, *The phases*.
-It reads the types of mpbt that its grants name, and it can write a finding: `docs/extern/mpbt/finding.h.md`.
+A module joins the phases of mpbt: `docs/extern/mpbt_command.h.md`, *The phases*.
+It reads the types of mpbt that its grants name, and it can write a finding: `docs/extern/mpbt_finding.h.md`.
 ## The headers of a module
 
 A module of a project includes the headers of mpbt and those of Bridge. The project fetches each one with a `[[source]]`:
 
-- `BC-mpbt.zip`, of the release of mpbt that the pin of the project names. It holds `include/mpbt`.
+- `BC-mpbt.zip`, of the release of mpbt that the pin of the project names. It holds each header of mpbt, in its folder `include`.
 - The release of Bridge that this release of mpbt uses, for `bridge_abi.h` and `bridge_schema.h`. The notes of each release of mpbt name it.
 
 ```toml
@@ -67,7 +67,7 @@ Each table `[[load]]` is an entity with `mpbt:Load`.
 | `config` | `bridge_text_t` | 32 | A map: each setting, then its value as a text of TOML, for example `true` or `"word"`. |
 | `from` | `mpbt_load_from_t` | 40 | Where the module comes from. |
 
-Bytes 41 to 43 hold no field. Its maps: `docs/extern/mpbt/project.h.md`, *Lists and maps*.
+Bytes 41 to 43 hold no field. Its maps: `docs/extern/mpbt_project.h.md`, *Lists and maps*.
 
 ### mpbt:mpbt_load_from_t
 

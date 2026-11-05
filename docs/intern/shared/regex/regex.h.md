@@ -1,7 +1,7 @@
 # src/shared/regex/regex.h
 
 This header declares a compiled pattern, and the functions that compile it and find it in a text.
-The claims `matches` and `matches_not` of a case use it: `docs/extern/mpbt/case.h.md`, *Claims*.
+The claims `matches` and `matches_not` of a case use it: `docs/extern/mpbt_case.h.md`, *Claims*.
 
 ## regex_t
 

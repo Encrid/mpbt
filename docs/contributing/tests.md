@@ -1,7 +1,7 @@
 # Tests
 
 `python project.py test` builds the project, then runs the cases of `tests/cases`.
-`docs/extern/mpbt/case.h.md` gives the form of a case: its keys, its claims, its scripts and its variables.
+`docs/extern/mpbt_case.h.md` gives the form of a case: its keys, its claims, its scripts and its variables.
 `tests` can also hold other files, for example the data that the cases read. No check reads `tests`.
 
 ## Write a case
@@ -33,25 +33,25 @@ With `Bob`, the output has no line `hello, Ada`. Thus the claims of the false va
 
 ## The break run
 
-The break run shows that each case can fail: `docs/extern/mpbt/case.h.md`, *The false variant*.
+The break run shows that each case can fail: `docs/extern/mpbt_case.h.md`, *The false variant*.
 A case whose false variant still passes makes the break run fail.
 `test` refuses a case that has no false variant, also without `--break`.
 
 ## The branches
 
-Each branch of the code must run in a case: `docs/extern/mpbt/branches.h.md`.
+Each branch of the code must run in a case: `docs/extern/mpbt_branches.h.md`.
 For each branch that `python project.py test --branches` writes, write a case that runs the branch, or remove the branch.
 A condition in an argument or in the body of a macro cannot get a probe. Thus write such a condition outside the macro.
 
 ## The leaks
 
-Each case must give back each resource that the code takes, also on the paths of the errors: `docs/extern/mpbt/leaks.h.md`.
+Each case must give back each resource that the code takes, also on the paths of the errors: `docs/extern/mpbt_leaks.h.md`.
 For each line that `python project.py test --leaks` writes, make the code give the resource back.
 If a case keeps a resource by design, write an exemption with its reason.
 
 ## Failed calls
 
-A case can make a call of the code fail, so that the case runs the path of the error: `docs/extern/mpbt/fail.h.md`.
+A case can make a call of the code fail, so that the case runs the path of the error: `docs/extern/mpbt_fail.h.md`.
 In this case, the second call of `malloc` gives `nullptr`:
 
 ```toml
@@ -82,14 +82,14 @@ The copies of a case compete for the processors and the memory. Thus they find a
 
 ## Variables
 
-A text of a case can hold variables, for example `{out}`: `docs/extern/mpbt/case.h.md`, *[[case]]*.
+A text of a case can hold variables, for example `{out}`: `docs/extern/mpbt_case.h.md`, *[[case]]*.
 
 ## The settings
 
-`[test]` of `.toolchain/project.toml` holds the settings of the tests: `docs/extern/mpbt/case.h.md`, *[test]*.
+`[test]` of `.toolchain/project.toml` holds the settings of the tests: `docs/extern/mpbt_case.h.md`, *[test]*.
 
 ## The messages of the code
 
 
-When `[test] writers` names functions, a case must write each message of the code, and a document must quote it: `docs/extern/mpbt/case.h.md`, *The messages of the code*.
+When `[test] writers` names functions, a case must write each message of the code, and a document must quote it: `docs/extern/mpbt_case.h.md`, *The messages of the code*.
 `docs/contributing/documentation_style.md`, *The messages of the code* tells how a document quotes a message.
