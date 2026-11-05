@@ -20,7 +20,7 @@ This file turns the tree of a pattern into the steps of a program, by the constr
 
 ## The limits
 
-A program has at most 65536 steps. A pattern with more stops the cases before the first one: `docs/extern/mpbt/case.h.md`, *Messages*.
+A program has at most 65536 steps. A pattern with more stops the cases before the first one: `docs/extern/mpbt_case.h.md`, *Messages*.
 
 ## Functions
 

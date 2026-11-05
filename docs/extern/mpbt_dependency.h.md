@@ -1,11 +1,11 @@
-# include/mpbt/dependency.h
+# include/mpbt_dependency.h
 
-`include/mpbt/dependency.h` gives `mpbt:Dependency`, a folder of files that a different project makes, and `mpbt:Agree`, a rule between dependencies.
+`include/mpbt_dependency.h` gives `mpbt:Dependency`, a folder of files that a different project makes, and `mpbt:Agree`, a rule between dependencies.
 
 ## [[dependency]]
 
 A dependency has a list of its files. A line of the list is `<key> <value>`, or `<digest>  <file>`.
-The `package.txt` of a different project is such a list: `docs/extern/mpbt/compose.h.md`, *package.txt*.
+The `package.txt` of a different project is such a list: `docs/extern/mpbt_compose.h.md`, *package.txt*.
 
 | Key | Type | Default | Value |
 | --- | --- | --- | --- |

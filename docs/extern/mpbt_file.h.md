@@ -1,6 +1,6 @@
-# include/mpbt/file.h
+# include/mpbt_file.h
 
-`include/mpbt/file.h` gives `mpbt:File`: a file of the project, with its bytes, for the checks.
+`include/mpbt_file.h` gives `mpbt:File`: a file of the project, with its bytes, for the checks.
 
 ## The files of the project
 

@@ -1,6 +1,6 @@
-# include/mpbt/project.h
+# include/mpbt_project.h
 
-`include/mpbt/project.h` gives `mpbt:Project` and `mpbt:Variable`: the name of the project, its legal notice and its variables.
+`include/mpbt_project.h` gives `mpbt:Project` and `mpbt:Variable`: the name of the project, its legal notice and its variables.
 This document also gives the rules that each type of mpbt follows.
 
 ## The files of the config
@@ -50,11 +50,11 @@ A value can hold variables too, and mpbt replaces them in the same way.
 | `{home}` | The name of the target of this machine. |
 | `{zig}` | The zig program, which `fetch` puts into the folder `zig` beside the program mpbt. |
 | `{toolchain}` | The folder `toolchain` beside the program mpbt. It holds the files that mpbt gives to a build, for example the sources of the key `runtime` of a target. |
-| `{paths}` | A list: a `*_PATH` macro for each artifact with `path = true`, then `BUILT_DIR` and `BUILT_SUFFIX`: `docs/extern/mpbt/artifact.h.md`, *The macros of the paths*. |
+| `{paths}` | A list: a `*_PATH` macro for each artifact with `path = true`, then `BUILT_DIR` and `BUILT_SUFFIX`: `docs/extern/mpbt_artifact.h.md`, *The macros of the paths*. |
 
 These values are variables too:
 
-- each key of the target, for example `{exe}`: `docs/extern/mpbt/target.h.md`;
+- each key of the target, for example `{exe}`: `docs/extern/mpbt_target.h.md`;
 - each key of `[variables]`;
 - each source, each dependency and each tool, with its folder or its program.
 

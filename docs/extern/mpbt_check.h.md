@@ -1,10 +1,10 @@
-# include/mpbt/check.h
+# include/mpbt_check.h
 
-`include/mpbt/check.h` gives the settings of the checks and their exceptions: `mpbt:TextCheck`, `mpbt:LayoutCheck`, `mpbt:Retired`, `mpbt:Make` and `mpbt:StyleException`.
+`include/mpbt_check.h` gives the settings of the checks and their exceptions: `mpbt:TextCheck`, `mpbt:LayoutCheck`, `mpbt:Retired`, `mpbt:Make` and `mpbt:StyleException`.
 
 ## The checks
 
-`check` runs these checks, in this order, on the files of the project: `docs/extern/mpbt/file.h.md`.
+`check` runs these checks, in this order, on the files of the project: `docs/extern/mpbt_file.h.md`.
 The guides of `docs/contributing` give their rules.
 
 | Check | What it checks |
@@ -138,7 +138,7 @@ Each exception of the style is an entity with `mpbt:StyleException`.
 
 ## Messages
 
-`check` writes a finding for each fault, with the name of its check: `docs/extern/mpbt/finding.h.md`.
+`check` writes a finding for each fault, with the name of its check: `docs/extern/mpbt_finding.h.md`.
 
 | Message | When |
 | --- | --- |

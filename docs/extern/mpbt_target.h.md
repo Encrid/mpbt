@@ -1,6 +1,6 @@
-# include/mpbt/target.h
+# include/mpbt_target.h
 
-`include/mpbt/target.h` gives `mpbt:Target`, the targets that mpbt can build for, and `mpbt_system_t`, the families of systems.
+`include/mpbt_target.h` gives `mpbt:Target`, the targets that mpbt can build for, and `mpbt_system_t`, the families of systems.
 
 ## The targets
 
@@ -19,7 +19,7 @@ A run builds for one target: `--target`, or the target of this machine.
 
 ## The keys of a target
 
-Each key of a target is a variable with `MPBT_SCOPE_TARGET`: `docs/extern/mpbt/project.h.md`, *mpbt:Variable*.
+Each key of a target is a variable with `MPBT_SCOPE_TARGET`: `docs/extern/mpbt_project.h.md`, *mpbt:Variable*.
 
 | Key | Value |
 | --- | --- |

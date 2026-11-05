@@ -10,7 +10,7 @@
 
     #include "bridge_abi.h"
     #include "bridge_schema.h"
-    #include "mpbt/target.h"
+    #include "mpbt_target.h"
 
     #define MPBT_LEAKS_FIELDS { \
         bridge_text_t memory; \

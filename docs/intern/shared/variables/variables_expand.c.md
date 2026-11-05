@@ -28,7 +28,7 @@ ENDPROCEDURE
 
 `expand_one` finds the entry of the name. A text value is expanded in its turn. A list value is joined with the separator, after each item is expanded.
 `expand_one` keeps the names that it is expanding on a stack. A name that is already on the stack holds itself, and the expansion stops with a finding.
-The messages are in `docs/extern/mpbt/project.h.md`, *Messages*.
+The messages are in `docs/extern/mpbt_project.h.md`, *Messages*.
 
 ## The limits
 

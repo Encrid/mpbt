@@ -1,10 +1,10 @@
-# include/mpbt/fail.h
+# include/mpbt_fail.h
 
-`include/mpbt/fail.h` gives `mpbt:FailCall`: a function that a case can make fail.
+`include/mpbt_fail.h` gives `mpbt:FailCall`: a function that a case can make fail.
 
 ## The calls that fail
 
-A case with the key `fail` makes a call fail: `docs/extern/mpbt/case.h.md`, *[[case]]*.
+A case with the key `fail` makes a call fail: `docs/extern/mpbt_case.h.md`, *[[case]]*.
 Thus the case runs the path of an error, for example the branch of `if (!p)`.
 `malloc`, `calloc` and `realloc` can always fail, with the value `nullptr`.
 

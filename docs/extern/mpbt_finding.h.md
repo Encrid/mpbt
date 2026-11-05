@@ -1,6 +1,6 @@
-# include/mpbt/finding.h
+# include/mpbt_finding.h
 
-`include/mpbt/finding.h` gives `mpbt:Finding`: a fault that a phase finds, for example a fault of a check.
+`include/mpbt_finding.h` gives `mpbt:Finding`: a fault that a phase finds, for example a fault of a check.
 
 ## The report
 

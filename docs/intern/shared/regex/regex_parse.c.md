@@ -16,7 +16,7 @@ A byte is each byte of the pattern that is not a mark of the grammar. A mark bec
 
 ## The refusals
 
-The parse stops at the first form that is not in the subset, and names it for the message of `docs/extern/mpbt/case.h.md`.
+The parse stops at the first form that is not in the subset, and names it for the message of `docs/extern/mpbt_case.h.md`.
 
 | Form | Example |
 | --- | --- |

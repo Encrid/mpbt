@@ -1,6 +1,6 @@
-# include/mpbt/leaks.h
+# include/mpbt_leaks.h
 
-`include/mpbt/leaks.h` gives the types of the count of `test --leaks`: `mpbt:Leaks`, `mpbt:LeakPair`, `mpbt:LeakKind` and `mpbt:LeakException`.
+`include/mpbt_leaks.h` gives the types of the count of `test --leaks`: `mpbt:Leaks`, `mpbt:LeakPair`, `mpbt:LeakKind` and `mpbt:LeakException`.
 
 ## test --leaks
 
@@ -99,7 +99,7 @@ Each kind of `kinds` is an entity with `mpbt:LeakKind`.
 | `takes` | `bridge_text_t` | 8 | A map: each function, then the list of its places. |
 | `gives` | `bridge_text_t` | 16 | A map: each function, then the list of its places. |
 
-Its maps: `docs/extern/mpbt/project.h.md`, *Lists and maps*.
+Its maps: `docs/extern/mpbt_project.h.md`, *Lists and maps*.
 
 ## mpbt:LeakException
 
@@ -111,7 +111,7 @@ Each exception is an entity with `mpbt:LeakException`.
 | `case_name` | `bridge_text_t` | 0 | `case`. |
 | `kind` | `bridge_text_t` | 8 | `kind`. |
 | `why` | `bridge_text_t` | 16 | `why`, or no bytes. |
-| `system` | `mpbt_system_t` | 24 | `system`: `docs/extern/mpbt/target.h.md`, *mpbt:mpbt_system_t*. |
+| `system` | `mpbt_system_t` | 24 | `system`: `docs/extern/mpbt_target.h.md`, *mpbt:mpbt_system_t*. |
 
 Bytes 25 to 27 hold no field.
 
