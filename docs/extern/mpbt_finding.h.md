@@ -14,7 +14,8 @@ The order is the order of the phases, then of the paths, of the lines and of the
 
 A part that holds no bytes, or 0, is not written, with its colon.
 Then `report` writes `faults: <count>`, and mpbt ends with 1. With no finding, mpbt ends with 0.
-Each other line of the output is a line of the log of a module.
+Each other line of the output is a line that a module or Bridge writes.
+A line of Bridge names its module first: `<module>: <text>`.
 
 ## mpbt:Finding
 
