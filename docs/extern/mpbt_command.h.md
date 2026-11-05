@@ -12,17 +12,19 @@ mpbt <command> [<option> ...]
 | Command | Phases | Result |
 | --- | --- | --- |
 | `fetch` | `read`, `fetch`, `take`, `report` | Gets zig and each source, then takes each dependency. |
-| `build` | `read`, `take`, `build`, `compose`, `report` | Builds the artifacts that ship, then composes the deliverable. |
-| `pack` | `read`, `take`, `build`, `compose`, `pack`, `report` | Builds as `build` does, then writes the zip and proves the package. |
-| `join` | `read`, `join`, `report` | Joins the zips of all the targets of a part into one zip. |
-| `test` | `read`, `take`, `build`, `test`, `report` | Builds each artifact, also those of the tests, then runs the cases. |
-| `check` | `read`, `check`, `report` | Runs each check of the project. |
+| `build` | `read`, `load`, `take`, `build`, `compose`, `report` | Builds the artifacts that ship, then composes the deliverable. |
+| `pack` | `read`, `load`, `take`, `build`, `compose`, `pack`, `report` | Builds as `build` does, then writes the zip and proves the package. |
+| `join` | `read`, `load`, `join`, `report` | Joins the zips of all the targets of a part into one zip. |
+| `test` | `read`, `load`, `take`, `build`, `test`, `report` | Builds each artifact, also those of the tests, then runs the cases. |
+| `check` | `read`, `load`, `check`, `report` | Runs each check of the project. |
 | `clean` | `read`, `clean`, `report` | Removes what the build made, but keeps the folder of mpbt and the sources. |
 | `distclean` | `read`, `clean`, `report` | Removes the output folder, with all that it holds. |
 | `cla` | `read`, `cla`, `report` | Decides whether the author of a pull request signed `cla.md`. |
 | `runner` | `read`, `runner`, `report` | Writes the commands that give a runner of GitHub the needs of `[ci]`. |
 
 mpbt ends with 0 if no phase writes a finding, and else with 1: `docs/extern/mpbt_finding.h.md`.
+It also ends with 1 when Bridge refuses a call, after the record that tells why, and when a signal stops it.
+A command line that *The options* refuses writes its message, and mpbt ends with 2.
 
 ## The options
 
@@ -49,11 +51,12 @@ mpbt ends with 0 if no phase writes a finding, and else with 1: `docs/extern/mpb
 
 ## The phases
 
-A module of a project can join each phase: `docs/extern/mpbt_load.h.md`.
+A module of a project can join each phase after `load`: `docs/extern/mpbt_load.h.md`.
 
 | Phase | Work |
 | --- | --- |
 | `read` | Writes `mpbt:Command`, then reads the config and the cases into their components. In `cla`, it writes only `mpbt:Command`. |
+| `load` | Builds each artifact of `[[load]]` for this machine, then loads each module of `[[load]]`. With no `[[load]]`, it does nothing. |
 | `fetch` | Gets zig and the sources. |
 | `take` | Takes the dependencies. |
 | `build` | Builds the artifacts. |
@@ -211,3 +214,5 @@ Declare the enum and the bitmask first.
 | `<author> has not signed cla.md` | mpbt asks the author to sign. The pull request fails. |
 | `<action>, <verdict>: <reason>` | `--decide` writes the action, `passes` or `fails`, and the reason. |
 | `<method> <path> answered <code>: <text>` | The API of GitHub answers with an error that is not 404. |
+| `a signal came: mpbt stops after this phase` | An interrupt, a termination or a hang-up came. A second signal ends mpbt at once, with 1. |
+| `mpbt cannot write its modules into <folder>` | The folder `{toolchain}/modules` does not take a file. |

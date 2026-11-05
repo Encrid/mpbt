@@ -29,12 +29,15 @@ A key that no table and no manifest gives stops mpbt.
 
 ## The modules of a project
 
-Before the first phase of each command, mpbt builds each artifact of `[[load]]`, for the target of this machine and not for `--target`.
+In the phase `load`, after `read`, mpbt builds each artifact of `[[load]]`, for the target of this machine and not for `--target`.
+Then it loads each module of `[[load]]`, and runs the other phases.
+`fetch`, `clean`, `distclean`, `cla` and `runner` do not run `load`. `fetch` runs before the sources that a build needs are there.
+
 mpbt loads a native module with BB-Native, which it holds, and a module of wasm with BB-Wasm.
 mpbt fetches BB-Wasm and its runtime as a source, only when a `[[load]]` names a module of wasm.
 A native module can use the OS. A module of wasm can only read and write components.
 
-A module joins the phases of mpbt: `docs/extern/mpbt_command.h.md`, *The phases*.
+A module joins the phases of mpbt that come after `load`: `docs/extern/mpbt_command.h.md`, *The phases*.
 It reads the types of mpbt that its grants name, and it can write a finding: `docs/extern/mpbt_finding.h.md`.
 ## The headers of a module
 
@@ -115,3 +118,4 @@ Declare the enum first.
 | `[[load]]: <file> is not there` | `file` names no file. |
 | `<module>: not stated: <key>` | No table and no manifest gives a key of the module. |
 | `<module>: <phase> is not a phase of mpbt` | `phases` maps a phase of the module to a phase that mpbt does not run. |
+| `<module>: a module of a project cannot join <phase>` | `phases` maps a phase of the module to `read`, `fetch`, `clean`, `cla` or `runner`, which run with no module of a project. |
