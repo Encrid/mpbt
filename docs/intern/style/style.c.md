@@ -1,6 +1,6 @@
 # src/style/style.c
 
-This file is the module `style` of Bridge: its exports, and the system that runs the check `style` of `docs/extern/mpbt_check.h.md`, *The checks*.
+This file is the module `style`, which runs on Bridge: its exports, and the system that runs the check `style` of `docs/extern/mpbt_check.h.md`, *The checks*.
 
 ## The manifest
 
