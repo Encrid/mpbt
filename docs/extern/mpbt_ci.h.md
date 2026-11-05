@@ -74,7 +74,7 @@ Declare the bitmask first.
 
 | Type | Written in the phase | Read by |
 | --- | --- | --- |
-| `mpbt:Ci` | `read`, from the settings | `runner`. Each other module with a grant. |
+| `mpbt:Ci` | `read`, from `[ci]` | `runner`. Each other module with a grant. |
 
 ## Messages
 

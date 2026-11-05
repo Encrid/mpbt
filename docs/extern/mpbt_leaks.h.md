@@ -146,7 +146,7 @@ Declare `mpbt:mpbt_system_t` first.
 
 | Type | Written in the phase | Read by |
 | --- | --- | --- |
-| `mpbt:Leaks` | `read`, from the settings | The count. Each other module with a grant. |
+| `mpbt:Leaks` | `read`, from `[leaks]` and its files `with` | The count. Each other module with a grant. |
 | Each other type | `read` | Each module with a grant. |
 
 ## Messages

@@ -1,6 +1,6 @@
 # include/mpbt_check.h
 
-`include/mpbt_check.h` gives the settings of the checks and their exceptions: `mpbt:TextCheck`, `mpbt:LayoutCheck`, `mpbt:Retired`, `mpbt:Make` and `mpbt:StyleException`.
+`include/mpbt_check.h` gives the settings of the checks and their exceptions: `mpbt:TextCheck`, `mpbt:LayoutCheck`, `mpbt:StyleCheck`, `mpbt:ProseCheck`, `mpbt:Retired`, `mpbt:Make` and `mpbt:StyleException`.
 
 ## The checks
 
@@ -50,6 +50,30 @@ SAMPLE_MAKE_DESC = "_desc"
 An exception lets one file break one rule of the style: `docs/contributing/coding_style.md`, *Exceptions*, gives its keys.
 `check` refuses an exception with no `why`, as `test --branches` and `test --leaks` do for their exceptions.
 
+## [style]
+
+`[style]` holds the limits of `docs/contributing/coding_style.md`, each with the rule that it bounds.
+
+| Key | Type | Default | Value |
+| --- | --- | --- | --- |
+| `columns` | integer | 80 | The most columns of a line: F3. |
+| `lines` | integer | 20 | The most lines of the body of a function: F4. |
+| `functions` | integer | 5 | The most functions of a file: O3. |
+| `arguments` | integer | 4 | The most arguments of a function: F5. |
+| `branches` | integer | 3 | The most branches of a chain of `if` and `else`: C1. |
+| `depth` | integer | 2 | The most levels of conditional branches inside each other: C1. |
+
+## [prose]
+
+`[prose]` gives the limits of the rules of `docs/contributing/documentation_style.md`, *Simplified Technical English*.
+
+| Key | Type | Default | Value |
+| --- | --- | --- | --- |
+| `sentence` | integer | 25 | The most words of a sentence. |
+| `step` | integer | 20 | The most words of a sentence of a numbered list. |
+| `paragraph` | integer | 6 | The most sentences of a paragraph. |
+| `description` | integer | 119 | The most characters of the description of the readme. |
+
 ## mpbt:TextCheck
 
 `mpbt:TextCheck` holds `unicode` and `refuse`. `mpbt:TextCheck` is a singleton: the settings of the check `text`.
@@ -68,6 +92,32 @@ An exception lets one file break one rule of the style: `docs/contributing/codin
 | Field | C type | Offset | Value |
 | --- | --- | --- | --- |
 | `guides` | `bridge_text_t` | 0 | `guides`, with each name on its own line. |
+
+## mpbt:StyleCheck
+
+`mpbt:StyleCheck` holds the keys of `[style]`. It is a singleton: the limits of the check `style`.
+`mpbt_style_check_t` takes 24 bytes. Its alignment is 4.
+
+| Field | C type | Offset | Value |
+| --- | --- | --- | --- |
+| `columns` | `uint32_t` | 0 | `columns`. |
+| `lines` | `uint32_t` | 4 | `lines`. |
+| `functions` | `uint32_t` | 8 | `functions`. |
+| `arguments` | `uint32_t` | 12 | `arguments`. |
+| `branches` | `uint32_t` | 16 | `branches`. |
+| `depth` | `uint32_t` | 20 | `depth`. |
+
+## mpbt:ProseCheck
+
+`mpbt:ProseCheck` holds the keys of `[prose]`. It is a singleton: the limits of the check `prose`.
+`mpbt_prose_check_t` takes 16 bytes. Its alignment is 4.
+
+| Field | C type | Offset | Value |
+| --- | --- | --- | --- |
+| `sentence` | `uint32_t` | 0 | `sentence`. |
+| `step` | `uint32_t` | 4 | `step`. |
+| `paragraph` | `uint32_t` | 8 | `paragraph`. |
+| `description` | `uint32_t` | 12 | `description`. |
 
 ## mpbt:Retired
 
@@ -106,6 +156,8 @@ Each exception of the style is an entity with `mpbt:StyleException`.
 | --- | --- | --- | --- |
 | `mpbt:TextCheck` | `mpbt_text_check_t` | `mpbt_text_check_t_desc` | `MPBT_TEXT_CHECK_FIELDS` |
 | `mpbt:LayoutCheck` | `mpbt_layout_check_t` | `mpbt_layout_check_t_desc` | `MPBT_LAYOUT_CHECK_FIELDS` |
+| `mpbt:StyleCheck` | `mpbt_style_check_t` | `mpbt_style_check_t_desc` | `MPBT_STYLE_CHECK_FIELDS` |
+| `mpbt:ProseCheck` | `mpbt_prose_check_t` | `mpbt_prose_check_t_desc` | `MPBT_PROSE_CHECK_FIELDS` |
 | `mpbt:Retired` | `mpbt_retired_t` | `mpbt_retired_t_desc` | `MPBT_RETIRED_FIELDS` |
 | `mpbt:Make` | `mpbt_make_t` | `mpbt_make_t_desc` | `MPBT_MAKE_FIELDS` |
 | `mpbt:StyleException` | `mpbt_style_exception_t` | `mpbt_style_exception_t_desc` | `MPBT_STYLE_EXCEPTION_FIELDS` |
@@ -113,6 +165,8 @@ Each exception of the style is an entity with `mpbt:StyleException`.
 ```text
 { bridge_text_t unicode; bridge_text_t refuse; }
 { bridge_text_t guides; }
+{ uint32_t columns; uint32_t lines; uint32_t functions; uint32_t arguments; uint32_t branches; uint32_t depth; }
+{ uint32_t sentence; uint32_t step; uint32_t paragraph; uint32_t description; }
 { bridge_text_t word; bridge_text_t text; }
 { bridge_text_t macro; bridge_text_t suffix; }
 { bridge_text_t rule; bridge_text_t path; bridge_text_t why; }
@@ -124,6 +178,8 @@ Each exception of the style is an entity with `mpbt:StyleException`.
 | --- | --- | --- | --- |
 | `mpbt:TextCheck` | `BRIDGE_STRUCT` | `BRIDGE_SINGLETON` | `BRIDGE_ON_DESTROY_REMOVE` |
 | `mpbt:LayoutCheck` | `BRIDGE_STRUCT` | `BRIDGE_SINGLETON` | `BRIDGE_ON_DESTROY_REMOVE` |
+| `mpbt:StyleCheck` | `BRIDGE_STRUCT` | `BRIDGE_SINGLETON` | `BRIDGE_ON_DESTROY_REMOVE` |
+| `mpbt:ProseCheck` | `BRIDGE_STRUCT` | `BRIDGE_SINGLETON` | `BRIDGE_ON_DESTROY_REMOVE` |
 | `mpbt:Retired` | `BRIDGE_STRUCT` | `BRIDGE_TABLE` | `BRIDGE_ON_DESTROY_REMOVE` |
 | `mpbt:Make` | `BRIDGE_STRUCT` | `BRIDGE_TABLE` | `BRIDGE_ON_DESTROY_REMOVE` |
 | `mpbt:StyleException` | `BRIDGE_STRUCT` | `BRIDGE_TABLE` | `BRIDGE_ON_DESTROY_REMOVE` |
@@ -132,8 +188,10 @@ Each exception of the style is an entity with `mpbt:StyleException`.
 
 | Type | Written in the phase | Read by |
 | --- | --- | --- |
-| `mpbt:TextCheck` | `read`, from the settings | The check `text`. Each other module with a grant. |
-| `mpbt:LayoutCheck` | `read`, from the settings | The check `layout`. Each other module with a grant. |
+| `mpbt:TextCheck` | `read`, from `[check]` | The check `text`. Each other module with a grant. |
+| `mpbt:LayoutCheck` | `read`, from `[check]` | The check `layout`. Each other module with a grant. |
+| `mpbt:StyleCheck` | `read`, from `[style]` | The check `style`. Each other module with a grant. |
+| `mpbt:ProseCheck` | `read`, from `[prose]` | The check `prose`. Each other module with a grant. |
 | Each other type | `read` | Each module with a grant. |
 
 ## Messages
@@ -229,6 +287,8 @@ Each exception of the style is an entity with `mpbt:StyleException`.
 
 ### commits
 
+The text of each finding of `commits` starts with the short name of the commit, then `: `. Its path is empty, so the report keeps the order of `git log`.
+
 | Message | When |
 | --- | --- |
 | `the message has more than 1 line` | The message of a commit has 2 lines or more. |
@@ -236,6 +296,7 @@ Each exception of the style is an entity with `mpbt:StyleException`.
 | `the type <type> is not in the list` | The type is not one of `docs/contributing/commits.md`. |
 | `the description has <words> words, and 20 is the most` | The description is too long. |
 | `git log <range>: <error>` | git cannot read the commits. |
+| `git is not on the path, and commits needs it` | This machine has no `git`. |
 
 ### style
 

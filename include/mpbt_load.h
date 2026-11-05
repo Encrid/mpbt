@@ -26,6 +26,7 @@ BRIDGE_SCHEMA_ENUM_DESC(mpbt_load_from_t, uint8_t, MPBT_LOAD_FROM_VALUES);
         bridge_text_t phases; \
         bridge_text_t config; \
         mpbt_load_from_t from; \
+        uint32_t order; \
     }
 
 BRIDGE_SCHEMA_STRUCT_TYPE(mpbt_load_t, MPBT_LOAD_FIELDS);

@@ -341,7 +341,7 @@ Declare the enums and the bitmasks first.
 
 | Type | Written in the phase | Read by |
 | --- | --- | --- |
-| `mpbt:Tests` | `read`, from the settings | The tests. Each other module with a grant. |
+| `mpbt:Tests` | `read`, from `[test]` | The tests. Each other module with a grant. |
 | Each other type | `read` | Each module with a grant. |
 
 ## Messages
@@ -366,7 +366,6 @@ Declare the enums and the bitmasks first.
 | `no case: <folder> holds no case` | The folder of the cases holds no case. `test` then ends with 0. |
 | `no case has <text> in its name` | `-k` matches no case. |
 | `.toolchain/project.toml: write [test] copies` | No `--copies`, and no `copies`. |
-| `<program> did not start` | The system did not start the command of a case or of its helper, for example because the program is not there. |
 | `<program> did not get the <signal>` | The system refused a signal of a script. |
 | `<case>: <verdict>` | mpbt writes the verdict of each case. With `--break`, `<case>, made false: <verdict>`. |
 | `<verdict> in <failed> of <copies> copies` | The verdict of a case when some of its copies failed. |

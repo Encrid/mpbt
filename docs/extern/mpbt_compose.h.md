@@ -1,6 +1,7 @@
 # include/mpbt_compose.h
 
-`include/mpbt_compose.h` gives `mpbt:Compose`, `mpbt:Part` and `mpbt:Package`: what the deliverable holds, the parts of a project, and the proof of its package.
+`include/mpbt_compose.h` gives `mpbt:Compose`, `mpbt:Part`, `mpbt:Package` and `mpbt:Deliverable`.
+These are what the deliverable holds, the parts of a project, the proof of its package, and the files of the deliverable.
 
 ## [compose]
 
@@ -93,6 +94,7 @@ After the zip, mpbt proves the package with `proof`:
 `join` writes `<build>/<name>.zip` for each part of `--part`. Each file of `<build>/<name>-<target>.zip` of each target goes into the folder `<target>`.
 The release of a project holds the zip of each target, and `sha256.txt` with the digest of each zip.
 The release of a part holds `<name>.zip` and its `sha256.txt`.
+The output of `join` holds only the path of each zip that it writes, one on each line. Thus the workflow `release` reads the paths.
 
 ## mpbt:Compose
 
@@ -135,6 +137,18 @@ Each part is an entity with `mpbt:Part`.
 
 Its lists: `docs/extern/mpbt_project.h.md`, *Lists and maps*.
 
+## mpbt:Deliverable
+
+`compose` writes an entity with `mpbt:Deliverable` for each part, or one in a project with no parts. `pack` reads it.
+`mpbt_deliverable_t` takes 16 bytes. Its alignment is 4.
+
+| Field | C type | Offset | Value |
+| --- | --- | --- | --- |
+| `part` | `bridge_text_t` | 0 | The part of the deliverable. A project with no parts gives no bytes. |
+| `files` | `bridge_text_t` | 8 | A list: the path of each file of the deliverable from `{dist}`, after `--leave`. |
+
+Its list: `docs/extern/mpbt_project.h.md`, *Lists and maps*.
+
 ## The C types
 
 | Type of Bridge | C type | Descriptor | Macro of the text |
@@ -142,11 +156,13 @@ Its lists: `docs/extern/mpbt_project.h.md`, *Lists and maps*.
 | `mpbt:Compose` | `mpbt_compose_t` | `mpbt_compose_t_desc` | `MPBT_COMPOSE_FIELDS` |
 | `mpbt:Part` | `mpbt_part_t` | `mpbt_part_t_desc` | `MPBT_PART_FIELDS` |
 | `mpbt:Package` | `mpbt_package_t` | `mpbt_package_t_desc` | `MPBT_PACKAGE_FIELDS` |
+| `mpbt:Deliverable` | `mpbt_deliverable_t` | `mpbt_deliverable_t_desc` | `MPBT_DELIVERABLE_FIELDS` |
 
 ```text
 { bridge_text_t name; bridge_text_t from; bridge_text_t headers; bridge_text_t into; bridge_text_t assets; bridge_text_t part; }
 { bridge_text_t part; bridge_text_t name; bridge_text_t folder; bridge_text_t uses; bridge_text_t third_party; }
 { bridge_text_t part; bridge_text_t proof; bridge_text_t link; bridge_text_t include; }
+{ bridge_text_t part; bridge_text_t files; }
 ```
 
 ## The declarations
@@ -156,6 +172,7 @@ Its lists: `docs/extern/mpbt_project.h.md`, *Lists and maps*.
 | `mpbt:Compose` | `BRIDGE_STRUCT` | `BRIDGE_TABLE` | `BRIDGE_ON_DESTROY_REMOVE` |
 | `mpbt:Part` | `BRIDGE_STRUCT` | `BRIDGE_TABLE` | `BRIDGE_ON_DESTROY_REMOVE` |
 | `mpbt:Package` | `BRIDGE_STRUCT` | `BRIDGE_TABLE` | `BRIDGE_ON_DESTROY_REMOVE` |
+| `mpbt:Deliverable` | `BRIDGE_STRUCT` | `BRIDGE_TABLE` | `BRIDGE_ON_DESTROY_REMOVE` |
 
 ## The grants
 
@@ -164,6 +181,7 @@ Its lists: `docs/extern/mpbt_project.h.md`, *Lists and maps*.
 | `mpbt:Compose` | `read` | Each module with a grant. |
 | `mpbt:Part` | `read` | Each module with a grant. |
 | `mpbt:Package` | `read` | Each module with a grant. |
+| `mpbt:Deliverable` | `compose` | `pack`. Each other module with a grant. |
 
 ## Messages
 
