@@ -30,6 +30,12 @@ ENDPROCEDURE
 `expand_one` keeps the names that it is expanding on a stack. A name that is already on the stack holds itself, and the expansion stops with a finding.
 The messages are in `docs/extern/mpbt_project.h.md`, *Messages*.
 
+## The names of a later phase
+
+The caller gives the list of the names that a later phase gives. For example, a build gives `{name}` and `{work}`, and a case gives `{case}` and `{port}`.
+`expand_one` writes such a variable as it is, with its braces and its separator.
+Thus `read` keeps them, for example in a key of a target, and the later phase replaces them: `docs/extern/mpbt_project.h.md`, *Variables*.
+
 ## The limits
 
 The stack holds each name one time, so its depth is at most the count of the variables.
@@ -38,6 +44,6 @@ The stack holds each name one time, so its depth is at most the count of the var
 
 | Function | Result |
 | --- | --- |
-| `variables_expand` | `true` and the text, or `false` and a finding. |
+| `variables_expand` | `true` and the text, or `false` and a finding. It keeps each name of the list of a later phase. |
 | `expand_one` | One variable, replaced. |
 | `join_list` | The items of a list, with the separator between them. |

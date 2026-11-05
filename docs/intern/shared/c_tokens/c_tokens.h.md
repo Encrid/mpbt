@@ -26,4 +26,6 @@ A directive is a whole line that starts with `#`, with each line that a `\` at i
 | --- | --- |
 | `c_tokens_start` | Starts a scan at the first byte. |
 | `c_tokens_next` | Gives the next token. |
+| `c_tokens_next_code` | Gives the next token of code. |
+| `c_tokens_start_directive` | Starts a scan inside a directive. |
 | `c_tokens_decode` | Gives the bytes of a string, with its escapes replaced. |
