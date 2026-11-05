@@ -363,6 +363,7 @@ Declare the enums and the bitmasks first.
 | `<path>: the case <name> pauses <pause>, and a pause is a number of seconds above 0` | `pause` is not a number above 0. |
 | `<path>: the case <name> sends an interrupt and a termination, and on Windows a termination turns off the interrupt` | A script sends both. |
 | `<path>: the case <name> uses <form> in a pattern, which mpbt does not have` | A pattern has a form that *Claims* does not give. |
+| `<path>: the case <name> has a pattern of more than 65536 steps` | The repeats of a pattern make it too long. |
 | `no case: <folder> holds no case` | The folder of the cases holds no case. `test` then ends with 0. |
 | `no case has <text> in its name` | `-k` matches no case. |
 | `.toolchain/project.toml: write [test] copies` | No `--copies`, and no `copies`. |

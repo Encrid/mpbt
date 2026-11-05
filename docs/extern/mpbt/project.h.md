@@ -188,4 +188,5 @@ Declare the 2 enums first.
 | `[variables] names a built-in variable or a key of a target: <names>` | A key of `[variables]` has the name of a variable that mpbt gives. |
 | `--set <name>=<value>: [variables] has no <name>` | `--set` names no key of `[variables]`. |
 | `the tool <name> is not at <path>` | A text names a tool, and the program is not there. |
+| `{<name>} holds itself: <names>` | A variable holds itself, directly or through the variables of `<names>`. |
 | `<setting> holds a line end, and a setting holds one line for each item` | An item of a list in the settings of a module holds a line end. |
