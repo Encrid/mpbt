@@ -40,6 +40,7 @@ For each source, `fetch` does these steps:
 
 An archive is a zip, a tar, or a tar with gzip or xz: its name ends with `.zip`, `.tar`, `.tar.gz` or `.tar.xz`.
 mpbt keeps the files, the folders, the links and the execute bits of an archive.
+On Windows, a link needs the Developer Mode or the rights of an administrator. Without them, mpbt copies the target of the link to its path.
 It refuses a path of an archive that leaves the folder `into`.
 
 A patch has a part for each file, from its line `diff --git`, and names the file in its line `+++ b/<file>`.
