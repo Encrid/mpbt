@@ -1,0 +1,17 @@
+[targets.x86_64-windows-gnu]
+bridge_sha256 = "02ac2a3c41c9aecd516a01d9dd9c8d38fe597a387fd24e2e9c463190a7e3a523"
+
+[targets.x86_64-linux-gnu]
+bridge_sha256 = "0d8080b3c7487700149260bd75868761bbcf05c875c03127c0deb8d6fab388b8"
+
+[targets.aarch64-macos]
+bridge_sha256 = "ad205e4d0995cbab55cb089a8193875a3bbfb773ab0cf9512d5c0082a461ff26"
+
+[targets.aarch64-linux-gnu]
+bridge_sha256 = "256044903dea462cd4b7066690721621b0b114ef7256ab62f7daa04b41db0259"
+
+[targets.x86_64-macos]
+bridge_sha256 = "defb7be2e6d23ac74936522ae0d6da92a4d7458f494f94c941abffb462e8de32"
+
+[targets.aarch64-windows-gnu]
+bridge_sha256 = "409ac1ed927acf53e956219caea6ada17be9218af22a7e5ba4cb7fc7c481a1b1"
